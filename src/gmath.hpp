@@ -1,0 +1,2 @@
+namespace gmath {
+} // namespace gmath
