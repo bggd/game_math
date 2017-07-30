@@ -5,9 +5,9 @@ struct Mat4 {
   union {
     float elements[16] = {
       1.0f, 0.0f, 0.0f, 0.0f,
-      1.0f, 1.0f, 0.0f, 0.0f,
-      1.0f, 0.0f, 1.0f, 0.0f,
-      1.0f, 0.0f, 0.0f, 1.0f
+      0.0f, 1.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 1.0f, 0.0f,
+      0.0f, 0.0f, 0.0f, 1.0f
     };
     struct {
       float m00, m01, m02, m03;
