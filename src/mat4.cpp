@@ -1,33 +1,48 @@
 namespace gmath {
 
-mat4 mat4::mul(const mat4& left, const mat4& right)
+mat4::mat4() : elements{0.0f}
 {
-  const float* A = left.elements;
-  const float* B = right.elements;
+}
 
-  mat4 ret = {
-    A[0]*B[0] + A[4]*B[1] + A[8]*B[2] + A[12]*B[3],
-    A[1]*B[0] + A[5]*B[1] + A[9]*B[2] + A[13]*B[3],
-    A[2]*B[0] + A[6]*B[1] + A[10]*B[2] + A[14]*B[3],
-    A[3]*B[0] + A[7]*B[1] + A[11]*B[2] + A[15]*B[3],
+mat4::mat4(vec4 c0, vec4 c1, vec4 c2, vec4 c3) : columns{c0, c1, c2, c3}
+{
+}
 
-    A[0]*B[4] + A[4]*B[5] + A[8]*B[6] + A[12]*B[7],
-    A[1]*B[4] + A[5]*B[5] + A[9]*B[6] + A[13]*B[7],
-    A[2]*B[4] + A[6]*B[5] + A[10]*B[6] + A[14]*B[7],
-    A[3]*B[4] + A[7]*B[5] + A[11]*B[6] + A[15]*B[7],
-
-    A[0]*B[8] + A[4]*B[9] + A[8]*B[10] + A[12]*B[11],
-    A[1]*B[8] + A[5]*B[9] + A[9]*B[10] + A[13]*B[11],
-    A[2]*B[8] + A[6]*B[9] + A[10]*B[10] + A[14]*B[11],
-    A[3]*B[8] + A[7]*B[9] + A[11]*B[10] + A[15]*B[11],
-
-    A[0]*B[12] + A[4]*B[13] + A[8]*B[14] + A[12]*B[15],
-    A[1]*B[12] + A[5]*B[13] + A[9]*B[14] + A[13]*B[15],
-    A[2]*B[12] + A[6]*B[13] + A[10]*B[14] + A[14]*B[15],
-    A[3]*B[12] + A[7]*B[13] + A[11]*B[14] + A[15]*B[15]
+mat4 mat4::identity()
+{
+  return {
+    vec4(1.0f, 0.0f, 0.0f, 0.0f),
+    vec4(0.0f, 1.0f, 0.0f, 0.0f),
+    vec4(0.0f, 0.0f, 1.0f, 0.0f),
+    vec4(0.0f, 0.0f, 0.0f, 1.0f)
   };
+}
 
-  return ret;
+mat4 mat4::post_mul(const mat4& m, const mat4& n)
+{
+  mat4 r;
+
+  r[0].x = m[0].x * n[0].x + m[1].x * n[0].y + m[2].x * n[0].z + m[3].x * n[0].w;
+  r[1].x = m[0].x * n[1].x + m[1].x * n[1].y + m[2].x * n[1].z + m[3].x * n[1].w;
+  r[2].x = m[0].x * n[2].x + m[1].x * n[2].y + m[2].x * n[2].z + m[3].x * n[2].w;
+  r[3].x = m[0].x * n[3].x + m[1].x * n[3].y + m[2].x * n[3].z + m[3].x * n[3].w;
+
+  r[0].y = m[0].y * n[0].x + m[1].y * n[0].y + m[2].y * n[0].z + m[3].y * n[0].w;
+  r[1].y = m[0].y * n[1].x + m[1].y * n[1].y + m[2].y * n[1].z + m[3].y * n[1].w;
+  r[2].y = m[0].y * n[2].x + m[1].y * n[2].y + m[2].y * n[2].z + m[3].y * n[2].w;
+  r[3].y = m[0].y * n[3].x + m[1].y * n[3].y + m[2].y * n[3].z + m[3].y * n[3].w;
+
+  r[0].z = m[0].z * n[0].x + m[1].z * n[0].y + m[2].z * n[0].z + m[3].z * n[0].w;
+  r[1].z = m[0].z * n[1].x + m[1].z * n[1].y + m[2].z * n[1].z + m[3].z * n[1].w;
+  r[2].z = m[0].z * n[2].x + m[1].z * n[2].y + m[2].z * n[2].z + m[3].z * n[2].w;
+  r[3].z = m[0].z * n[3].x + m[1].z * n[3].y + m[2].z * n[3].z + m[3].z * n[3].w;
+
+  r[0].w = m[0].w * n[0].x + m[1].w * n[0].y + m[2].w * n[0].z + m[3].w * n[0].w;
+  r[1].w = m[0].w * n[1].x + m[1].w * n[1].y + m[2].w * n[1].z + m[3].w * n[1].w;
+  r[2].w = m[0].w * n[2].x + m[1].w * n[2].y + m[2].w * n[2].z + m[3].w * n[2].w;
+  r[3].w = m[0].w * n[3].x + m[1].w * n[3].y + m[2].w * n[3].z + m[3].w * n[3].w;
+
+  return r;
 }
 
 mat4 mat4::ortho(float left, float right, float bottom, float top, float z_near, float z_far)
@@ -37,15 +52,15 @@ mat4 mat4::ortho(float left, float right, float bottom, float top, float z_near,
   ty = -(top+bottom)/(top-bottom);
   tz = -(z_far+z_near)/(z_far-z_near);
 
-  mat4 ret;
-  ret.elements[0] = 2.0f/(right-left);
-  ret.elements[5] = 2.0f/(top-bottom);
-  ret.elements[11] = -2.0f/(z_far-z_near);
-  ret.elements[12] = tx;
-  ret.elements[13] = ty;
-  ret.elements[14] = tz;
+  mat4 r = mat4::identity();
+  r.elements[0] = 2.0f/(right-left);
+  r.elements[5] = 2.0f/(top-bottom);
+  r.elements[11] = -2.0f/(z_far-z_near);
+  r.elements[12] = tx;
+  r.elements[13] = ty;
+  r.elements[14] = tz;
 
-  return ret;
+  return r;
 }
 
 } // namespace gmath
