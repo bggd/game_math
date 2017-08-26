@@ -15,6 +15,7 @@ struct mat4 {
 
   static mat4 identity();
   static mat4 post_mul(const mat4& m, const mat4& n);
+  static mat4 perspective(float y_fov, float aspect, float z_near, float z_far);
   static mat4 ortho(float left, float right, float bottom, float top, float z_near, float z_far);
 
 };
