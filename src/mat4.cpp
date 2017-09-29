@@ -18,29 +18,29 @@ mat4 mat4::identity()
   };
 }
 
-mat4 mat4::post_mul(const mat4& m, const mat4& n)
+mat4 mat4::mul(const mat4& a, const mat4& b)
 {
   mat4 r;
 
-  r[0].x = m[0].x * n[0].x + m[1].x * n[0].y + m[2].x * n[0].z + m[3].x * n[0].w;
-  r[1].x = m[0].x * n[1].x + m[1].x * n[1].y + m[2].x * n[1].z + m[3].x * n[1].w;
-  r[2].x = m[0].x * n[2].x + m[1].x * n[2].y + m[2].x * n[2].z + m[3].x * n[2].w;
-  r[3].x = m[0].x * n[3].x + m[1].x * n[3].y + m[2].x * n[3].z + m[3].x * n[3].w;
+  r[0].x = a[0].x * b[0].x + a[1].x * b[0].y + a[2].x * b[0].z + a[3].x * b[0].w;
+  r[1].x = a[0].x * b[1].x + a[1].x * b[1].y + a[2].x * b[1].z + a[3].x * b[1].w;
+  r[2].x = a[0].x * b[2].x + a[1].x * b[2].y + a[2].x * b[2].z + a[3].x * b[2].w;
+  r[3].x = a[0].x * b[3].x + a[1].x * b[3].y + a[2].x * b[3].z + a[3].x * b[3].w;
 
-  r[0].y = m[0].y * n[0].x + m[1].y * n[0].y + m[2].y * n[0].z + m[3].y * n[0].w;
-  r[1].y = m[0].y * n[1].x + m[1].y * n[1].y + m[2].y * n[1].z + m[3].y * n[1].w;
-  r[2].y = m[0].y * n[2].x + m[1].y * n[2].y + m[2].y * n[2].z + m[3].y * n[2].w;
-  r[3].y = m[0].y * n[3].x + m[1].y * n[3].y + m[2].y * n[3].z + m[3].y * n[3].w;
+  r[0].y = a[0].y * b[0].x + a[1].y * b[0].y + a[2].y * b[0].z + a[3].y * b[0].w;
+  r[1].y = a[0].y * b[1].x + a[1].y * b[1].y + a[2].y * b[1].z + a[3].y * b[1].w;
+  r[2].y = a[0].y * b[2].x + a[1].y * b[2].y + a[2].y * b[2].z + a[3].y * b[2].w;
+  r[3].y = a[0].y * b[3].x + a[1].y * b[3].y + a[2].y * b[3].z + a[3].y * b[3].w;
 
-  r[0].z = m[0].z * n[0].x + m[1].z * n[0].y + m[2].z * n[0].z + m[3].z * n[0].w;
-  r[1].z = m[0].z * n[1].x + m[1].z * n[1].y + m[2].z * n[1].z + m[3].z * n[1].w;
-  r[2].z = m[0].z * n[2].x + m[1].z * n[2].y + m[2].z * n[2].z + m[3].z * n[2].w;
-  r[3].z = m[0].z * n[3].x + m[1].z * n[3].y + m[2].z * n[3].z + m[3].z * n[3].w;
+  r[0].z = a[0].z * b[0].x + a[1].z * b[0].y + a[2].z * b[0].z + a[3].z * b[0].w;
+  r[1].z = a[0].z * b[1].x + a[1].z * b[1].y + a[2].z * b[1].z + a[3].z * b[1].w;
+  r[2].z = a[0].z * b[2].x + a[1].z * b[2].y + a[2].z * b[2].z + a[3].z * b[2].w;
+  r[3].z = a[0].z * b[3].x + a[1].z * b[3].y + a[2].z * b[3].z + a[3].z * b[3].w;
 
-  r[0].w = m[0].w * n[0].x + m[1].w * n[0].y + m[2].w * n[0].z + m[3].w * n[0].w;
-  r[1].w = m[0].w * n[1].x + m[1].w * n[1].y + m[2].w * n[1].z + m[3].w * n[1].w;
-  r[2].w = m[0].w * n[2].x + m[1].w * n[2].y + m[2].w * n[2].z + m[3].w * n[2].w;
-  r[3].w = m[0].w * n[3].x + m[1].w * n[3].y + m[2].w * n[3].z + m[3].w * n[3].w;
+  r[0].w = a[0].w * b[0].x + a[1].w * b[0].y + a[2].w * b[0].z + a[3].w * b[0].w;
+  r[1].w = a[0].w * b[1].x + a[1].w * b[1].y + a[2].w * b[1].z + a[3].w * b[1].w;
+  r[2].w = a[0].w * b[2].x + a[1].w * b[2].y + a[2].w * b[2].z + a[3].w * b[2].w;
+  r[3].w = a[0].w * b[3].x + a[1].w * b[3].y + a[2].w * b[3].z + a[3].w * b[3].w;
 
   return r;
 }

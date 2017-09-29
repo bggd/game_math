@@ -14,7 +14,7 @@ struct mat4 {
   inline const vec4& operator[](size_t idx) const { return this->columns[idx]; }
 
   static mat4 identity();
-  static mat4 post_mul(const mat4& m, const mat4& n);
+  static mat4 mul(const mat4& a, const mat4& b);
   static mat4 perspective(float y_fov, float aspect, float z_near, float z_far);
   static mat4 ortho(float left, float right, float bottom, float top, float z_near, float z_far);
 
