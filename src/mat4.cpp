@@ -66,7 +66,7 @@ mat4 mat4::ortho(float left, float right, float bottom, float top, float z_near,
   mat4 r = mat4::identity();
   r.elements[0] = 2.0f/(right-left);
   r.elements[5] = 2.0f/(top-bottom);
-  r.elements[11] = -2.0f/(z_far-z_near);
+  r.elements[10] = -2.0f/(z_far-z_near);
   r.elements[12] = tx;
   r.elements[13] = ty;
   r.elements[14] = tz;
