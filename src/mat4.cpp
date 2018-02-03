@@ -45,6 +45,29 @@ mat4 mat4::mul(const mat4& a, const mat4& b)
   return r;
 }
 
+mat4 mat4::translate(vec3 position)
+{
+  return {
+    vec4(1.0f, 0.0f, 0.0f, 0.0f),
+    vec4(0.0f, 1.0f, 0.0f, 0.0f),
+    vec4(0.0f, 0.0f, 1.0f, 0.0f),
+    vec4(position, 1.0f)
+  };
+}
+
+mat4 mat4::rotate(float angle, vec3 axis)
+{
+  float c = cosf(angle);
+  float s = sinf(angle);
+  float t = 1.0f - c;
+  return {
+    vec4(axis.x*axis.x*t + c, axis.y*axis.x*t + axis.z*s, axis.x*axis.z*t - axis.y*s, 0.0f),
+    vec4(axis.x*axis.y*t - axis.z*s, axis.y*axis.y*t + c, axis.y*axis.z*t + axis.x*s, 0.0f),
+    vec4(axis.x*axis.z*t + axis.y*s, axis.y*axis.z*t - axis.x*s, axis.z*axis.z*t + c, 0.0f),
+    vec4(0.0f, 0.0f, 0.0f, 1.0f)
+  };
+}
+
 mat4 mat4::perspective(float y_fov, float aspect, float z_near, float z_far)
 {
   float f = tanf(0.5f*y_fov);

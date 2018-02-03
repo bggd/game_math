@@ -15,6 +15,8 @@ struct mat4 {
 
   static mat4 identity();
   static mat4 mul(const mat4& a, const mat4& b);
+  static mat4 translate(vec3 position);
+  static mat4 rotate(float angle, vec3 axis);
   static mat4 perspective(float y_fov, float aspect, float z_near, float z_far);
   static mat4 ortho(float left, float right, float bottom, float top, float z_near, float z_far);
 

@@ -6,6 +6,7 @@ struct vec4 {
 
   vec4();
   vec4(float cx, float cy, float cz, float cw);
+  vec4(vec3 v, float cw);
 
 };
 
