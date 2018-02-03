@@ -11,6 +11,7 @@ struct vec3 {
   static vec3 sub(vec3 a, vec3 b);
   static vec3 mul(vec3 a, vec3 b);
   static float length(vec3 v);
+  static float length2(vec3 v);
   static vec3 normalize(vec3 v);
   static float dot(vec3 a, vec3 b);
   static vec3 cross(vec3 a, vec3 b);

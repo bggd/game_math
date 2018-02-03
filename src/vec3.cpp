@@ -28,6 +28,11 @@ float vec3::length(vec3 v)
   return sqrtf(vec3::dot(v, v));
 }
 
+float vec3::length2(vec3 v)
+{
+  return vec3::dot(v, v);
+}
+
 vec3 vec3::normalize(vec3 v)
 {
   float len;
