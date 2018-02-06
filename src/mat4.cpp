@@ -74,8 +74,8 @@ mat4 mat4::perspective(float y_fov, float aspect, float z_near, float z_far)
   return {
     vec4(1.0f/aspect*f, 0.0f, 0.0f, 0.0f),
     vec4(0.0f, 1.0f/f, 0.0f, 0.0f),
-    vec4(0.0f, 0.0f, z_far+z_near/z_near-z_far, -1.0f),
-    vec4(0.0f, 0.0f, 2*z_far*z_near/z_near-z_far, 0.0f)
+    vec4(0.0f, 0.0f, -((z_far+z_near)/(z_far-z_near)), -1.0f),
+    vec4(0.0f, 0.0f, -((2*z_far*z_near)/(z_far-z_near)), 0.0f)
   };
 }
 
