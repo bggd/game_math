@@ -97,4 +97,14 @@ mat4 mat4::ortho(float left, float right, float bottom, float top, float z_near,
   return r;
 }
 
+vec4 mat4::xform(const mat4& m, vec4 v)
+{
+  vec4 r;
+  r.x = m[0].x*v.x + m[1].x*v.y + m[2].x*v.z + m[3].x*v.w;
+  r.y = m[0].y*v.x + m[1].y*v.y + m[2].y*v.z + m[3].y*v.w;
+  r.z = m[0].z*v.x + m[1].z*v.y + m[2].z*v.z + m[3].z*v.w;
+  r.w = m[0].w*v.x + m[1].w*v.y + m[2].w*v.z + m[3].w*v.w;
+  return r;
+}
+
 } // namespace gmath
