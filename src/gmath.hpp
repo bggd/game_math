@@ -6,7 +6,7 @@
 #include "mat4.hpp"
 
 
-#ifdef GAME_MATH_IMPLEMENTATION
+#ifdef GAME_MATH_IMPL
 #include "vec3.cpp"
 #include "vec4.cpp"
 #include "mat4.cpp"
