@@ -68,6 +68,16 @@ mat4 mat4::rotate(float angle, vec3 axis)
   };
 }
 
+mat4 mat4::transpose(const mat4& m)
+{
+  return {
+    vec4(m[0][0], m[1][0], m[2][0], m[3][0]),
+    vec4(m[0][1], m[1][1], m[2][1], m[3][1]),
+    vec4(m[0][2], m[1][2], m[2][2], m[3][2]),
+    vec4(m[0][3], m[1][3], m[2][3], m[3][3])
+  };
+}
+
 mat4 mat4::perspective(float y_fov, float aspect, float z_near, float z_far)
 {
   float f = 1.0f/tanf(0.5f*y_fov);
