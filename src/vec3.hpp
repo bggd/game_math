@@ -1,3 +1,6 @@
+#ifndef GAME_MATH_SRC_VEC3_HPP_INCLUDED
+#define GAME_MATH_SRC_VEC3_HPP_INCLUDED
+
 namespace gmath {
 
 struct vec3 {
@@ -19,3 +22,5 @@ struct vec3 {
 };
 
 } // namespace gmath
+
+#endif //GAME_MATH_SRC_VEC3_HPP_INCLUDED

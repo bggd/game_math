@@ -1,3 +1,6 @@
+#ifndef GAME_MATH_SRC_MAT4_HPP_INCLUDED
+#define GAME_MATH_SRC_MAT4_HPP_INCLUDED
+
 namespace gmath {
 
 struct mat4 {
@@ -27,3 +30,5 @@ struct mat4 {
 };
 
 } // namespace gmath
+
+#endif // GAME_MATH_SRC_MAT4_HPP_INCLUDED
