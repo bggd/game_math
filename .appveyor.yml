@@ -11,7 +11,9 @@ install:
   - vcpkg install glm:x64-windows
 
 build_script:
-  - cmake -DCMAKE_BUILD_TOOLCHAIN=C:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake -G "Visual Studio 15 2017"
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_BUILD_TOOLCHAIN=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake -G "Visual Studio 15 2017" ..
   - cmake --build . --config Debug
 
 test_script:
