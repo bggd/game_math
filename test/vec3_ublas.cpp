@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE My Test
+#define BOOST_TEST_MODULE Vec3 Ublas
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/included/unit_test.hpp>
 #include <boost/numeric/ublas/vector.hpp>
@@ -9,7 +9,7 @@
 #include <type_traits>
 
 
-BOOST_AUTO_TEST_CASE(test_vec3, *boost::unit_test::tolerance(0.00001))
+BOOST_AUTO_TEST_CASE(test_vec3_ubas, *boost::unit_test::tolerance(0.00001))
 {
   BOOST_TEST(std::is_trivially_copyable<gmath::vec3>());
 
