@@ -1,6 +1,6 @@
 #define BOOST_TEST_MODULE Mat4 GLM
 #define BOOST_TEST_DYN_LINK
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 
 #include "../src/vec3.hpp"
 #include "../src/vec3.cpp"
