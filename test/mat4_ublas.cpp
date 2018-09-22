@@ -14,7 +14,7 @@
 
 using namespace boost::numeric;
 
-BOOST_AUTO_TEST_CASE(test_mat4_ubas, *boost::unit_test::tolerance(0.00001))
+BOOST_AUTO_TEST_CASE(test_mat4_ubas, *boost::unit_test::tolerance<float>(0.00001f))
 {
   BOOST_TEST(std::is_trivially_copyable<gmath::mat4>());
 
