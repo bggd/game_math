@@ -14,7 +14,6 @@
 
 #include <type_traits>
 #include <vector>
-#include <iostream>
 
 
 BOOST_AUTO_TEST_CASE(test_mat4_glm, *boost::unit_test::tolerance<float>(0.000001f))

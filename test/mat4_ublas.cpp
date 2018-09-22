@@ -11,7 +11,6 @@
 #include "../src/mat4.cpp"
 
 #include <type_traits>
-#include <stdio.h>
 
 using namespace boost::numeric;
 
