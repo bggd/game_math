@@ -80,7 +80,7 @@ mat4 mat4::transpose(const mat4& m)
 
 mat4 mat4::perspective(float y_fov, float aspect, float z_near, float z_far)
 {
-  float f = 1.0f/tanf(0.5*y_fov);
+  float f = 1.0f/tanf(0.5f*y_fov);
   return {
     vec4(f/aspect, 0.0f, 0.0f, 0.0f),
     vec4(0.0f, f, 0.0f, 0.0f),
