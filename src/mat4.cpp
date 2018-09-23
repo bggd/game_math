@@ -109,23 +109,22 @@ mat4 mat4::ortho(float left, float right, float bottom, float top, float z_near,
 
 mat4 mat4::look_at(vec3 position, vec3 target, vec3 up)
 {
-  vec3 camera_forward = vec3::sub(position, target);
+  vec3 camera_forward = vec3::sub(target, position);
   camera_forward = vec3::normalize(camera_forward);
 
-  vec3 camera_side = vec3::cross(up, camera_forward);
+  vec3 camera_side = vec3::cross(camera_forward, up);
   camera_side = vec3::normalize(camera_side);
 
-  vec3 camera_up = vec3::cross(camera_forward, camera_side);
+  vec3 camera_up = vec3::cross(camera_side, camera_forward);
 
-  // Transposed rotation
-  mat4 view(
-    vec4(camera_side.x, camera_up.x, camera_forward.x, 0.0f),
-    vec4(camera_side.y, camera_up.y, camera_forward.y, 0.0f),
-    vec4(camera_side.z, camera_up.z, camera_forward.z, 0.0f),
-    vec4(-vec3::dot(camera_side, position), -vec3::dot(camera_up, position), -vec3::dot(camera_forward, position), 1.0f)
+  mat4 M(
+    vec4(camera_side.x, camera_up.x, -camera_forward.x, 0.0f),
+    vec4(camera_side.y, camera_up.y, -camera_forward.y, 0.0f),
+    vec4(camera_side.z, camera_up.z, -camera_forward.z, 0.0f),
+    vec4(0.0f, 0.0f, 0.0f, 1.0f)
   );
 
-  return view;
+  return mat4::mul(M, mat4::translate(vec3(-position.x, -position.y, -position.z)));
 }
 
 vec4 mat4::xform(const mat4& m, vec4 v)
