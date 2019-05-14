@@ -54,4 +54,9 @@ vec3 vec3::cross(vec3 a, vec3 b)
   };
 }
 
+vec3 vec3::scalar_mul(vec3 v, float scalar)
+{
+  return { v.x*scalar, v.y*scalar, v.z*scalar };
+}
+
 } // namespace gmath

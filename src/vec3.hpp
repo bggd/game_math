@@ -19,6 +19,8 @@ struct vec3 {
   static float dot(vec3 a, vec3 b);
   static vec3 cross(vec3 a, vec3 b);
 
+  static vec3 scalar_mul(vec3 v, float scalar);
+
 };
 
 } // namespace gmath
