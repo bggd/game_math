@@ -1,10 +1,13 @@
+#include "mat4.hpp"
+#include <math.h>
+
 namespace gmath {
 
-mat4::mat4() : elements{0.0f}
+mat4::mat4() : raw{0.0f}
 {
 }
 
-mat4::mat4(vec4 c0, vec4 c1, vec4 c2, vec4 c3) : columns{c0, c1, c2, c3}
+mat4::mat4(vec4 c0, vec4 c1, vec4 c2, vec4 c3) : elements{c0, c1, c2, c3}
 {
 }
 
@@ -97,12 +100,12 @@ mat4 mat4::ortho(float left, float right, float bottom, float top, float z_near,
   tz = -((z_far+z_near)/(z_far-z_near));
 
   mat4 r = mat4::identity();
-  r.elements[0] = 2.0f/(right-left);
-  r.elements[5] = 2.0f/(top-bottom);
-  r.elements[10] = -2.0f/(z_far-z_near);
-  r.elements[12] = tx;
-  r.elements[13] = ty;
-  r.elements[14] = tz;
+  r.raw[0] = 2.0f/(right-left);
+  r.raw[5] = 2.0f/(top-bottom);
+  r.raw[10] = -2.0f/(z_far-z_near);
+  r.raw[12] = tx;
+  r.raw[13] = ty;
+  r.raw[14] = tz;
 
   return r;
 }

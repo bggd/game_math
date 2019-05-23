@@ -1,20 +1,23 @@
 #ifndef GAME_MATH_SRC_MAT4_HPP_INCLUDED
 #define GAME_MATH_SRC_MAT4_HPP_INCLUDED
 
+#include "vec3.hpp"
+#include "vec4.hpp"
+
 namespace gmath {
 
 struct mat4 {
 
   union {
-    float elements[16];
-    vec4 columns[4];
+    float raw[16];
+    vec4 elements[4];
   };
 
   mat4();
   mat4(vec4 c0, vec4 c1, vec4 c2, vec4 c3);
 
-  inline vec4& operator[](size_t idx) { return this->columns[idx]; }
-  inline const vec4& operator[](size_t idx) const { return this->columns[idx]; }
+  inline vec4& operator[](size_t idx) { return this->elements[idx]; }
+  inline const vec4& operator[](size_t idx) const { return this->elements[idx]; }
 
   static mat4 identity();
   static mat4 mul(const mat4& a, const mat4& b);
