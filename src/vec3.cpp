@@ -1,3 +1,6 @@
+#include "vec3.hpp"
+#include <math.h>
+
 namespace gmath {
 
 vec3::vec3() : x(0.0f), y(0.0f), z(0.0f)

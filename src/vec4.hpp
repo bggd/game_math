@@ -1,6 +1,8 @@
 #ifndef GAME_MATH_SRC_VEC4_HPP_INCLUDED
 #define GAME_MATH_SRC_VEC4_HPP_INCLUDED
 
+#include "vec3.hpp"
+
 namespace gmath {
 
 struct vec4 {
